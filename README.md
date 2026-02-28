@@ -4,6 +4,8 @@ Backend telemetry service for **Sunod** (add hyperlink once game repo has been u
 
 Built with **FastAPI** + **PostgreSQL**.
 
+Might change the tech stack from paper's architectural diagram. PostgreSQL > MongoDB
+
 ---
 
 ## Tech Stack
@@ -33,9 +35,6 @@ python -m venv venv
 
 # Windows
 venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -46,7 +45,7 @@ pip install -r requirements.txt
 
 ### 4. Set up PostgreSQL
 
-Create a database and update your connection string in `app/database.py`:
+Create a database and update connection string in `app/database.py`:
 
 ```python
 SQLALCHEMY_DATABASE_URL = "postgresql://user:password@localhost/sunod"
@@ -157,7 +156,7 @@ sunod-telemetry/
 
 ## To-Do
 
-- [ ] Temporarily remove `email` field requirement from user creation (not really needed during demo phase)
+- [ ] Temporarily remove `email` field requirement from user creation (mmm not really needed during demo/survey phase)
 ---
 
 ## Related
