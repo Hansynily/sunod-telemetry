@@ -131,7 +131,7 @@ It creates the player if new, logs the quest attempt, records skills used, and u
 
 ## RIASEC Framework
 
-Skills used during runs are tagged with a RIASEC code (`R`, `I`, `A`, `S`, `E`, `C`). The backend automatically accumulates these into a per-player RIASEC profile, which can be queried via the admin performance endpoint.
+Skills used during runs are tagged with a RIASEC code (`R`, `I`, `A`, `S`, `E`, `C`). The backend automatically accumulates these into a per-player RIASEC profile.
 
 ---
 
@@ -156,7 +156,7 @@ sunod-telemetry/
 
 ## To-Do
 
-- [ ] Temporarily remove `email` field requirement from user creation (mmm not really needed during demo/survey phase)
+- [ ] Temporarily remove `email` field requirement from user creation. mmm not really needed during demo/survey phase)
 ---
 
 ## Related
