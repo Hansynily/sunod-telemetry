@@ -1,6 +1,6 @@
 # sunod-telemetry
 
-Backend telemetry service for **Sunod** — a roguelite career exploration mobile game. This backend tracks player sessions, quest attempts, skill usage, and RIASEC profile progression.
+Backend telemetry service for **Sunod** (add hyperlink once game repo has been uploaded plox thx). This backend tracks player sessions, quest attempts, skill usage, and RIASEC profile progression.
 
 Built with **FastAPI** + **PostgreSQL**.
 
