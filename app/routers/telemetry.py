@@ -33,7 +33,11 @@ def create_user(user_in: schemas.UserCreate, db: Session = Depends(get_db)):
             detail="User with this username or email already exists.",
         )
 
-    user = models.User(username=user_in.username, email=user_in.email)
+    user = models.User(
+        player_id=str(uuid.uuid4()),
+        username=user_in.username,
+        email=user_in.email
+        )    
     db.add(user)
     db.flush()
 
