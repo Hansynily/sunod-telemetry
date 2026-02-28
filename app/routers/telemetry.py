@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app import models, schemas
 
+import uuid
 
 router = APIRouter(prefix="/api/telemetry", tags=["telemetry"])
 admin_router = APIRouter(prefix="/api/admin", tags=["admin"])
