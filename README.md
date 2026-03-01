@@ -159,6 +159,7 @@ sunod-telemetry/
 - [ ] Temporarily remove `email` field requirement from user creation. mmm not really needed during demo/survey phase)
 - [ ] Brand new repo instead of this fork.
 ---
+TEST README
 
 ## Related
 
