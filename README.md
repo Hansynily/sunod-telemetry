@@ -1,6 +1,6 @@
 # sunod-telemetry
 
-Backend telemetry service for **Sunod** (add hyperlink once game repo has been uploaded plox thx). This backend tracks player sessions, quest attempts, skill usage, and RIASEC profile progression.
+Backend telemetry service for [**Sunod**](https://github.com/Hansynily/sunod-game). This backend tracks player sessions, quest attempts, skill usage, and RIASEC profile progression.
 
 Built with **FastAPI** + **PostgreSQL**.
 
@@ -165,4 +165,4 @@ sunod-telemetry/
 
 ## Related
 
-- Unity game client repo: *(TBA TBA TBA TBA)*
+- Unity game client repo: [*sunod-game*](https://github.com/Hansynily/sunod-game)
