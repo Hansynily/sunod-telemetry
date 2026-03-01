@@ -160,6 +160,7 @@ sunod-telemetry/
 - [ ] Brand new repo instead of this fork.
 - [ ] Add delete entry
 - [ ] Light mode option
+- [ ] Move to cloud host instead of local only.
 ---
 
 ## Related
