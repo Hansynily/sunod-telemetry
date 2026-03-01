@@ -160,7 +160,7 @@ sunod-telemetry/
 - [ ] Brand new repo instead of this fork.
 - [ ] Add delete entry
 - [ ] Light mode option
-- [ ] Move to cloud host instead of local only.
+- [ ] Move to cloud host as separate branch. Leave this current branch as local-only branch.
 ---
 
 ## Related
