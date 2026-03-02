@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         :root {
-            color-scheme: dark;
+            color-scheme: dark light;
             --bg: #020617;
             --border-subtle: #1f2937;
             --accent: #22d3ee;
@@ -16,6 +16,18 @@
             --text-muted: #6b7280;
             --text-subtle: #9ca3af;
             --danger: #f97373;
+        }
+
+        [data-theme="light"] {
+            --bg: #f3f6fb;
+            --border-subtle: #d6deea;
+            --accent: #0ea5e9;
+            --accent-soft: rgba(14, 165, 233, 0.12);
+            --accent-strong: #16a34a;
+            --text-primary: #0f172a;
+            --text-muted: #475569;
+            --text-subtle: #64748b;
+            --danger: #dc2626;
         }
 
         *,
@@ -30,6 +42,10 @@
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: radial-gradient(circle at top left, #0f172a 0, #020617 50%, #000 100%);
             color: var(--text-primary);
+        }
+
+        [data-theme="light"] body {
+            background: radial-gradient(circle at top left, #ffffff 0, #eef3f9 55%, #e2e8f0 100%);
         }
 
         .app-shell {
@@ -198,6 +214,66 @@
             color: var(--text-subtle);
         }
 
+        [data-theme="light"] .avatar-pill {
+            background: radial-gradient(circle at 30% 0, rgba(14, 165, 233, 0.2), #ffffff);
+        }
+
+        .topbar-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .inline-form {
+            margin: 0;
+            display: inline;
+        }
+
+        .theme-toggle {
+            border: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--text-subtle);
+            border-radius: 999px;
+            padding: 0.45rem 0.85rem;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text-primary);
+        }
+
+        [data-theme="light"] .theme-toggle {
+            background: #ffffff;
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: #eef3f9;
+        }
+
+        .danger-button {
+            border: 1px solid rgba(248, 113, 113, 0.5);
+            background: rgba(127, 29, 29, 0.3);
+            color: var(--danger);
+            border-radius: 999px;
+            padding: 0.45rem 0.85rem;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+
+        .danger-button:hover {
+            background: rgba(248, 113, 113, 0.15);
+        }
+
+        [data-theme="light"] .danger-button {
+            background: #fff1f2;
+        }
+
+        [data-theme="light"] .danger-button:hover {
+            background: #ffe4e6;
+        }
+
         .page-header {
             display: flex;
             flex-direction: column;
@@ -335,6 +411,67 @@
             background-color: rgba(15, 23, 42, 0.98);
             overflow: hidden;
             box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+        }
+
+        [data-theme="light"] .sidebar {
+            background: linear-gradient(180deg, #ecf2fa 0%, #ecf2fa 50%, #e6edf7 100%);
+        }
+
+        [data-theme="light"] .nav-item.active {
+            background: linear-gradient(135deg, #dff3ff 0%, #edf4ff 100%);
+            color: #0f172a;
+        }
+
+        [data-theme="light"] .nav-item.active span.icon {
+            background-color: #ffffff;
+            color: #0284c7;
+        }
+
+        [data-theme="light"] .metric-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f8ff 100%);
+            border-color: #c9d7ea;
+        }
+
+        [data-theme="light"] .metric-card:nth-child(2) {
+            background: linear-gradient(135deg, #ffffff 0%, #f3f2ff 100%);
+        }
+
+        [data-theme="light"] .metric-card:nth-child(3) {
+            background: linear-gradient(135deg, #ffffff 0%, #fff8eb 100%);
+        }
+
+        [data-theme="light"] .metric-card:nth-child(4) {
+            background: linear-gradient(135deg, #ffffff 0%, #eefaf2 100%);
+        }
+
+        [data-theme="light"] .back-pill,
+        [data-theme="light"] .filter-pill,
+        [data-theme="light"] .skills-pill span,
+        [data-theme="light"] .riasec-item,
+        [data-theme="light"] .section-card,
+        [data-theme="light"] .table-card {
+            background-color: #ffffff;
+        }
+
+        [data-theme="light"] .section-card,
+        [data-theme="light"] .table-card {
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .riasec-bar {
+            background: linear-gradient(90deg, #e2e8f0, #cfe8ff);
+        }
+
+        [data-theme="light"] .riasec-bar span {
+            background: linear-gradient(90deg, #38bdf8, #60a5fa);
+        }
+
+        [data-theme="light"] tbody tr:nth-child(even) td {
+            background-color: #f8fafc;
+        }
+
+        [data-theme="light"] tbody tr:hover td {
+            background-color: #e8f4ff;
         }
 
         .table-header-row {
@@ -507,7 +644,13 @@
     <main class="main">
         <div class="topbar">
             <a href="/admin/users" class="back-pill">⬅ Back to Players</a>
-            <div class="avatar-pill">{{ user.username[0]|upper if user.username else "P" }}</div>
+            <div class="topbar-actions">
+                <form class="inline-form" method="post" action="/admin/users/{{ user.id }}/delete" onsubmit="return confirm('Delete this user and all telemetry records? This cannot be undone.');">
+                    <button type="submit" class="danger-button">Delete User</button>
+                </form>
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Light mode</button>
+                <div class="avatar-pill">{{ user.username[0]|upper if user.username else "P" }}</div>
+            </div>
         </div>
 
         <section class="page-header">
@@ -643,6 +786,32 @@
         </section>
     </main>
 </div>
+<script>
+    (function () {
+        const root = document.documentElement;
+        const toggle = document.getElementById("theme-toggle");
+        const key = "sunod_theme";
+
+        function applyTheme(theme) {
+            root.setAttribute("data-theme", theme);
+            if (toggle) {
+                toggle.textContent = theme === "light" ? "Dark mode" : "Light mode";
+            }
+        }
+
+        const saved = localStorage.getItem(key);
+        const initialTheme = saved || "dark";
+        applyTheme(initialTheme);
+
+        if (toggle) {
+            toggle.addEventListener("click", function () {
+                const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+                applyTheme(nextTheme);
+                localStorage.setItem(key, nextTheme);
+            });
+        }
+    })();
+</script>
 </body>
 </html>
 

@@ -2,12 +2,14 @@ from typing import List
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app import models, schemas
+
+import uuid
 
 
 router = APIRouter(prefix="/api/telemetry", tags=["telemetry"])
@@ -33,7 +35,11 @@ def create_user(user_in: schemas.UserCreate, db: Session = Depends(get_db)):
             detail="User with this username or email already exists.",
         )
 
-    user = models.User(username=user_in.username, email=user_in.email)
+    user = models.User(
+    player_id=str(uuid.uuid4()),
+    username=user_in.username,
+    email=user_in.email
+    )
     db.add(user)
     db.flush()
 
@@ -350,4 +356,15 @@ def admin_user_performance_page(
             "summary": summary,
         },
     )
+
+
+@admin_ui_router.post("/users/{user_id}/delete")
+def admin_delete_user(user_id: int, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found.")
+
+    db.delete(user)
+    db.commit()
+    return RedirectResponse(url="/admin/users", status_code=status.HTTP_303_SEE_OTHER)
 
