@@ -20,20 +20,6 @@ https://github.com/Hansynily/sunod-game
 - Provide admin API endpoints for user and performance data
 - Provide admin web pages to inspect users and user performance
 
-## Project Structure
-
-```text
-app/
-  main.py                 # FastAPI app entrypoint
-  database.py             # Database connection/session config
-  models.py               # SQLAlchemy models
-  schemas.py              # Pydantic schemas
-  routers/telemetry.py    # Telemetry, admin API, admin UI routes
-templates/
-  users.html
-  user_performance.html
-requirements.txt
-```
 
 ## Prerequisites
 
